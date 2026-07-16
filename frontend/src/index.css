@@ -1,0 +1,215 @@
+/* =========================================
+   THEME VARIABLES (LIGHT & DARK MODE)
+========================================= */
+/* Default (Light Mode) */
+:root {
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --border: #e5e7eb;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --error-bg: #fee2e2;
+  --error-text: #b91c1c;
+  --transition-speed: 0.3s;
+}
+
+/* Dark Mode Overrides */
+.dark-mode {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --border: #334155;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --error-bg: #7f1d1d;
+  --error-text: #fca5a5;
+}
+
+/* =========================================
+   GLOBAL STYLES
+========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* The wrapper controls the full screen background */
+.app-wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  padding: 2rem 1rem;
+}
+
+/* =========================================
+   LAYOUT & CONTAINERS
+========================================= */
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+  border: 1px solid var(--border);
+}
+
+/* Header Flexbox (Title + Toggle Button) */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-title {
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.05rem;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-main);
+  transition: all var(--transition-speed);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle:hover {
+  background-color: var(--border);
+}
+
+/* =========================================
+   FORM ELEMENTS
+========================================= */
+.search-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 1rem;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: all var(--transition-speed);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.search-button {
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.search-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   UI STATES & DATA DISPLAY
+========================================= */
+.error-message {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.results-section {
+  margin-bottom: 2.5rem;
+}
+
+.results-section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.scraped-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s;
+}
+
+.scraped-image:hover {
+  transform: scale(1.05);
+}
+
+.data-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.data-list li {
+  background: var(--bg-color);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  word-break: break-all;
+  font-family: monospace; /* Gives a nice technical feel to the URLs */
+  font-size: 0.9rem;
+}
+
+.data-list a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.data-list a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
