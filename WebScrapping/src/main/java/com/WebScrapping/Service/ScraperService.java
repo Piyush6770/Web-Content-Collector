@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Service
 public class ScraperService {
 
-    public ScrapResponse webscrap(String url){
+    public ScrapResponse webscrap(String url) throws IOException {
         Document doc = Jsoup.connect(url).get();
         List<String> images = new ArrayList<>();
         List<String> videos = new ArrayList<>();
@@ -25,8 +26,8 @@ public class ScraperService {
                 images.add(src);
             }
         }
-        for(Element vid : doc.select("vid")){
-            String src = vid.absUrl("src");
+        for(Element video : doc.select("video")){
+            String src = video.absUrl("src");
             if(!src.isEmpty()){
                 videos.add(src);
             }

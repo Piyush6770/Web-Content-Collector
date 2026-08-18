@@ -25,7 +25,11 @@ function App() {
 
     try {
       const targetUrl = encodeURIComponent(url);
-      const response = await fetch(`http://localhost:8080/api/scrap?url=${targetUrl}`);
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    const response = await fetch(
+        `${API_URL}/api/scrap?url=${targetUrl}`
+    );
 
       if (!response.ok) {
         throw new Error(`Server returned status: ${response.status}`);
