@@ -15,7 +15,11 @@ import java.util.List;
 public class ScraperService {
 
     public ScrapResponse webscrap(String url) throws IOException {
-        Document doc = Jsoup.connect(url).get();
+        Document doc = Jsoup.connect(url)
+                .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36")
+                .timeout(20000)
+                .followRedirects(true)
+                .get();
         List<String> images = new ArrayList<>();
         List<String> videos = new ArrayList<>();
         List<String> links = new ArrayList<>();
